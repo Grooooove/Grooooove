@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://xhtwn4n0mh2r"]
+
+[ext_resource type="Script" path="res://sences/Manager/component/死亡动画组件.gd" id="1_j3tm4"]
+[ext_resource type="Texture2D" uid="uid://cvm8p0a7j1fce" path="res://sences/Game_Object/enemy/敌人1.png" id="1_mqhqw"]
+
+[sub_resource type="Animation" id="Animation_gcm41"]
+resource_name = "死亡动画"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_26xr7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xiw7m"]
+_data = {
+"RESET": SubResource("Animation_26xr7"),
+"死亡动画": SubResource("Animation_gcm41")
+}
+
+[sub_resource type="Curve" id="Curve_fseoq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.646667, 0.846154), 0.0, 0.0, 0, 0, Vector2(0.973333, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_u1md4"]
+curve = SubResource("Curve_fseoq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mtng0"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 15.0
+initial_velocity_min = 120.0
+initial_velocity_max = 200.0
+angular_velocity_min = -360.0
+angular_velocity_max = 360.0
+gravity = Vector3(0, 800, 0)
+scale_curve = SubResource("CurveTexture_u1md4")
+
+[node name="死亡动画组件" type="Node2D"]
+script = ExtResource("1_j3tm4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xiw7m")
+}
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_mtng0")
+texture = ExtResource("1_mqhqw")
+lifetime = 0.75
+one_shot = true
+fixed_fps = 0
+interpolate = false
+visibility_rect = Rect2(-48.0138, -36.8135, 64.0138, 137.289)

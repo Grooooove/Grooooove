@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://rmeuefhql1c6"]
+
+[ext_resource type="Script" path="res://sences/autoload/游戏事件管理器.gd" id="1_w4uyu"]
+
+[node name="游戏事件管理器" type="Node"]
+script = ExtResource("1_w4uyu")

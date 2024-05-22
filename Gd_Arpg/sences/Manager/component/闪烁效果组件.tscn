@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://djov572lx7quk"]
+
+[ext_resource type="Script" path="res://sences/Manager/component/闪烁效果组件.gd" id="1_r5bem"]
+[ext_resource type="Material" uid="uid://bhw604pk8b4m2" path="res://sences/Manager/component/闪烁效果_material.tres" id="2_rc27j"]
+
+[node name="闪烁效果组件" type="Node"]
+script = ExtResource("1_r5bem")
+"闪光材质" = ExtResource("2_rc27j")

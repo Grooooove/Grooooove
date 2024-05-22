@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4nv6t22srulf"]
+
+[ext_resource type="Script" path="res://sences/Game_Object/ability/axe/斧_技能管理器/斧_技能管理器.gd" id="1_pgk3s"]
+[ext_resource type="PackedScene" uid="uid://dxok8rvy8tgnn" path="res://sences/Game_Object/ability/axe/斧技能.tscn" id="2_togpf"]
+
+[node name="斧_技能管理器" type="Node"]
+script = ExtResource("1_pgk3s")
+"斧子预制体" = ExtResource("2_togpf")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="发射斧子"]

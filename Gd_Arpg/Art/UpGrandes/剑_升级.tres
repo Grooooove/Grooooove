@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="技能升级" load_steps=2 format=3 uid="uid://b1hsssanmlgaj"]
+
+[ext_resource type="Script" path="res://Art/UpGrandes/技能升级.gd" id="1_pss44"]
+
+[resource]
+script = ExtResource("1_pss44")
+ID = "10001"
+"名称" = "剑来"
+"等级上限" = 5
+"描述" = "每级增加10%范围和10%攻击力"

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk4vdsom62srt"]
+
+[ext_resource type="Script" path="res://sences/Manager/component/移动组件.gd" id="1_wgh2u"]
+
+[node name="移动组件" type="Node"]
+script = ExtResource("1_wgh2u")

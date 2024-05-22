@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bhw604pk8b4m2"]
+
+[ext_resource type="Shader" path="res://sences/Manager/component/闪烁效果组件.gdshader" id="1_6sa2y"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_6sa2y")
+shader_parameter/lerp_percent = 0.0

@@ -1,0 +1,147 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctexgjeysbwxy"]
+
+[ext_resource type="Script" path="res://sences/Game_Object/ability/Sword/剑预制体.gd" id="1_inykk"]
+[ext_resource type="Texture2D" uid="uid://bk1ovdp5runto" path="res://sences/Game_Object/ability/Sword/剑.png" id="1_r77wo"]
+[ext_resource type="PackedScene" uid="uid://cwdn4h3n6b4h5" path="res://sences/Manager/component/伤害组件.tscn" id="3_sidxx"]
+
+[sub_resource type="Animation" id="Animation_qkjwq"]
+length = 0.7
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.6),
+"transitions": PackedFloat32Array(1, 0.392292, 4.92458, 3.73213),
+"update": 0,
+"values": [-0.523599, 0.0, 3.14159, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05, 0.25, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.7, 0.7), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("伤害组件/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_gp0h6"]
+resource_name = "剑_使用"
+length = 0.7
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.55),
+"transitions": PackedFloat32Array(0.466517, 2.46229, 0.183011),
+"update": 0,
+"values": [-0.523599, 3.14159, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05, 0.4, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.7, 0.7), Vector2(1.5, 1.5), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("伤害组件/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4343q"]
+_data = {
+"RESET": SubResource("Animation_qkjwq"),
+"剑_使用": SubResource("Animation_gp0h6")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ril5d"]
+size = Vector2(16, 16)
+
+[node name="剑预制体" type="Node2D"]
+script = ExtResource("1_inykk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -0.523599
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("1_r77wo")
+offset = Vector2(0, -4)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4343q")
+}
+autoplay = "RESET"
+
+[node name="伤害组件" parent="." instance=ExtResource("3_sidxx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="伤害组件"]
+position = Vector2(8, -4)
+shape = SubResource("RectangleShape2D_ril5d")
+disabled = true

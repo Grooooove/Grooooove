@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://3ds63sq6i02w"]
+
+[ext_resource type="Script" path="res://UI/技能升级界面.gd" id="1_2cocq"]
+[ext_resource type="PackedScene" uid="uid://csqy8ncus0diu" path="res://UI/技能升级卡.tscn" id="1_6ov1o"]
+
+[node name="技能升级界面" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_2cocq")
+"技能升级卡界面" = ExtResource("1_6ov1o")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="升级卡容器" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4

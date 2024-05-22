@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccea7dqcxeq43"]
+
+[ext_resource type="Script" path="res://sences/Game_Object/endSence/结算画面.gd" id="1_cdci0"]
+
+[node name="结算画面" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_cdci0")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(180, 170)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="大标题" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Game  Over"
+horizontal_alignment = 1
+
+[node name="小标题" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "小游戏体验到此结束,请付费购买正式版"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="再来一次按钮" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "再来一局"
+
+[node name="退出按钮" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+text = "退出游戏"

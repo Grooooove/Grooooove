@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ok0prnjfleq8"]
+
+[ext_resource type="Script" path="res://sences/Manager/component/血量.gd" id="1_dyrc5"]
+
+[node name="血量" type="Node"]
+script = ExtResource("1_dyrc5")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4kdfq4wo55qs"]
+
+[ext_resource type="Script" path="res://sences/Manager/下蛋公鸡.gd" id="1_n451w"]
+[ext_resource type="PackedScene" uid="uid://byfrbxom8q6q8" path="res://sences/Game_Object/enemy/敌人1.tscn" id="2_q0thm"]
+[ext_resource type="PackedScene" uid="uid://dsln3rll6ijky" path="res://sences/Game_Object/enemy/敌人2.tscn" id="3_re0bd"]
+
+[node name="下蛋公鸡" type="Node"]
+script = ExtResource("1_n451w")
+"小怪数组" = Array[PackedScene]([ExtResource("2_q0thm"), ExtResource("3_re0bd")])
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true

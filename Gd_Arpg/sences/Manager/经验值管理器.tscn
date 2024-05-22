@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6te3ncytfid5"]
+
+[ext_resource type="Script" path="res://sences/Manager/经验值管理器.gd" id="1_7hwnp"]
+
+[node name="经验值管理器" type="Node"]
+script = ExtResource("1_7hwnp")

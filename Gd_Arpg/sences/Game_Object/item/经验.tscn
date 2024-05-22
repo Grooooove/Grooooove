@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwkwe60r0ulwu"]
+
+[ext_resource type="Script" path="res://sences/Game_Object/item/经验.gd" id="1_gp2nq"]
+[ext_resource type="Texture2D" uid="uid://c2f8opxu3p7bi" path="res://sences/Game_Object/item/tile_0126.png" id="2_jkd22"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5pcn5"]
+radius = 16.0
+
+[node name="经验" type="Node2D"]
+script = ExtResource("1_gp2nq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jkd22")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5pcn5")

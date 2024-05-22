@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://xyrog5f4lnml"]
+
+[ext_resource type="Script" path="res://sences/Manager/component/受伤组件.gd" id="1_v0bbt"]
+
+[node name="受伤组件" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_v0bbt")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt0noq1r45wqm"]
+
+[ext_resource type="Script" path="res://sences/Manager/component/掉落.gd" id="1_mmvmu"]
+
+[node name="掉落" type="Node"]
+script = ExtResource("1_mmvmu")

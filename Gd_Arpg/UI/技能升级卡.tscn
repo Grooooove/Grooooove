@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://csqy8ncus0diu"]
+
+[ext_resource type="Script" path="res://UI/技能升级卡.gd" id="1_7c5s4"]
+
+[node name="技能升级卡" type="PanelContainer"]
+custom_minimum_size = Vector2(120, 150)
+script = ExtResource("1_7c5s4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="名称标签" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "技能名称"
+
+[node name="描述标签" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "技能升级效果的详细描述"
+autowrap_mode = 2

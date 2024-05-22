@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://fptu0o0w6gg7"]
+
+[ext_resource type="Script" path="res://UI/伤害文字.gd" id="1_ohb2p"]
+
+[node name="伤害文字" type="Node2D"]
+script = ExtResource("1_ohb2p")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -11.5
+offset_right = 37.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0.360784, 0.141176, 0.133333, 0.670588)
+theme_override_constants/outline_size = 6
+text = "1111"
+horizontal_alignment = 1
+vertical_alignment = 1

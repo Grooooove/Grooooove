@@ -1,0 +1,109 @@
+[gd_scene load_steps=17 format=3 uid="uid://byfrbxom8q6q8"]
+
+[ext_resource type="Script" path="res://sences/Game_Object/enemy/敌人1.gd" id="1_t05ut"]
+[ext_resource type="Texture2D" uid="uid://cvm8p0a7j1fce" path="res://sences/Game_Object/enemy/敌人1.png" id="1_xyekm"]
+[ext_resource type="PackedScene" uid="uid://ok0prnjfleq8" path="res://sences/Manager/component/血量.tscn" id="2_gwcw4"]
+[ext_resource type="PackedScene" uid="uid://dt0noq1r45wqm" path="res://sences/Manager/component/掉落.tscn" id="3_f8g2l"]
+[ext_resource type="PackedScene" uid="uid://cwkwe60r0ulwu" path="res://sences/Game_Object/item/经验.tscn" id="4_d8mi0"]
+[ext_resource type="PackedScene" uid="uid://xyrog5f4lnml" path="res://sences/Manager/component/受伤组件.tscn" id="5_6sxks"]
+[ext_resource type="PackedScene" uid="uid://dk4vdsom62srt" path="res://sences/Manager/component/移动组件.tscn" id="5_dhlxr"]
+[ext_resource type="PackedScene" uid="uid://xhtwn4n0mh2r" path="res://sences/Manager/component/死亡动画组件.tscn" id="5_x1q7q"]
+[ext_resource type="PackedScene" uid="uid://djov572lx7quk" path="res://sences/Manager/component/闪烁效果组件.tscn" id="6_nndta"]
+[ext_resource type="Shader" path="res://sences/Manager/component/闪烁效果组件.gdshader" id="7_uht5u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ssoc"]
+resource_local_to_scene = true
+shader = ExtResource("7_uht5u")
+shader_parameter/lerp_percent = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_72u73"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m8x6m"]
+radius = 7.0
+
+[sub_resource type="Animation" id="Animation_1jop6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("精灵父节点/Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_6e44c"]
+resource_name = "移动"
+length = 0.6
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("精灵父节点/Sprite2D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.35, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.261799, 0.261799, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sodcg"]
+_data = {
+"RESET": SubResource("Animation_1jop6"),
+"移动": SubResource("Animation_6e44c")
+}
+
+[node name="敌人1" type="CharacterBody2D" groups=["敌人"]]
+collision_layer = 8
+collision_mask = 9
+motion_mode = 1
+script = ExtResource("1_t05ut")
+
+[node name="血量" parent="." instance=ExtResource("2_gwcw4")]
+
+[node name="掉落" parent="." node_paths=PackedStringArray("血量") instance=ExtResource("3_f8g2l")]
+"掉落物" = ExtResource("4_d8mi0")
+"血量" = NodePath("../血量")
+
+[node name="移动组件" parent="." instance=ExtResource("5_dhlxr")]
+"移动速度" = 75.0
+"加速度" = 10.0
+
+[node name="闪烁效果组件" parent="." node_paths=PackedStringArray("血量", "图片") instance=ExtResource("6_nndta")]
+"血量" = NodePath("../血量")
+"图片" = NodePath("../精灵父节点/Sprite2D")
+"闪光材质" = SubResource("ShaderMaterial_1ssoc")
+
+[node name="死亡动画组件" parent="." node_paths=PackedStringArray("血量", "图片") instance=ExtResource("5_x1q7q")]
+"血量" = NodePath("../血量")
+"图片" = NodePath("../精灵父节点/Sprite2D")
+
+[node name="受伤组件" parent="." node_paths=PackedStringArray("血量") instance=ExtResource("5_6sxks")]
+"血量" = NodePath("../血量")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="受伤组件"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_72u73")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_m8x6m")
+
+[node name="精灵父节点" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="精灵父节点"]
+texture = ExtResource("1_xyekm")
+offset = Vector2(0, -7)
+
+[node name="动画器" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sodcg")
+}
+autoplay = "移动"

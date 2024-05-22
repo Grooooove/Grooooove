@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhu7nplhieae3"]
+
+[ext_resource type="Script" path="res://sences/Game_Object/ability/Sword/剑_技能管理/剑_技能管理.gd" id="1_abiuh"]
+[ext_resource type="PackedScene" uid="uid://ctexgjeysbwxy" path="res://sences/Game_Object/ability/Sword/剑预制体.tscn" id="2_eihv3"]
+
+[node name="剑_技能管理" type="Node"]
+script = ExtResource("1_abiuh")
+"剑" = ExtResource("2_eihv3")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="使用剑"]
